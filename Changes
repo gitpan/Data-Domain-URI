@@ -1,0 +1,13 @@
+---
+global:
+  name: Data-Domain-URI
+releases:
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
+      - original version
+      - 'Data::Domain::URI_TEST: made run() more generic'
+      - 'all classes: added documentation'
+      - updated t/perlcriticrc
+    date: 2007-11-21T18:21:54Z
+    tags: []
+    version: 0.01
