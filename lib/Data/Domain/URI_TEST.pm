@@ -6,7 +6,7 @@ use Test::More;
 use Data::Domain::URI ':all';
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base qw(Test::CompanionClasses::Base);
@@ -101,7 +101,7 @@ please use the C<datadomainuri> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.01 of L<Data::Domain::URI_TEST>.
+This document describes version 0.02 of L<Data::Domain::URI_TEST>.
 
 =head1 BUGS AND LIMITATIONS
 
