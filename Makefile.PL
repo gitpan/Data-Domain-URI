@@ -1,24 +1,54 @@
-use inc::Module::Install;
-include 'Module::AutoInstall';
 
-name 'Data-Domain-URI';
-all_from 'lib/Data/Domain/URI.pm';
-perl_version '5.006';
+use strict;
+use warnings;
 
-requires 'Data::Domain::SemanticAdapter';
-requires 'Data::Semantic::URI';
+ BEGIN { require 5.008; } 
 
-build_requires 'Test::CompanionClasses' => '0.03';
-build_requires 'Test::More' => '0.70';
+use ExtUtils::MakeMaker 6.11;
 
-process_templates(
-    first_year => 2007,
-    rest_from  => "$ENV{HOME}/.mitlib/standard_pod",
-    start_tag  => '{%',
-    end_tag    => '%}',
-);
 
-use_standard_tests(without => 'pod_coverage');
-auto_install;
-auto_include;
-WriteAll;
+
+my %WriteMakefileArgs = (
+                       'test' => {
+                                   'TESTS' => 't/*.t'
+                                 },
+                       'NAME' => 'Data::Domain::URI',
+                       'DISTNAME' => 'Data-Domain-URI',
+                       'CONFIGURE_REQUIRES' => {
+                                                 'ExtUtils::MakeMaker' => '6.11'
+                                               },
+                       'AUTHOR' => 'Marcel Gruenauer <marcel@cpan.org>',
+                       'BUILD_REQUIRES' => {},
+                       'ABSTRACT' => 'Data domain classes for URIs',
+                       'EXE_FILES' => [],
+                       'VERSION' => '1.100850',
+                       'PREREQ_PM' => {
+                                        'Scalar::Util' => '0',
+                                        'Test::CompanionClasses::Base' => '0',
+                                        'Data::Semantic::URI::TestData::fax' => '0',
+                                        'File::Find' => '0',
+                                        'Test::CompanionClasses' => '0',
+                                        'English' => '0',
+                                        'parent' => '0',
+                                        'Data::Semantic::URI::TestData::file' => '0',
+                                        'constant' => '0',
+                                        'Data::Domain::SemanticAdapter::Test' => '0',
+                                        'Exporter' => '0',
+                                        'Data::Semantic::URI::TestData::ftp' => '0',
+                                        'Carp' => '0',
+                                        'Test::More' => '0.88',
+                                        'Data::Domain::SemanticAdapter' => '0',
+                                        'File::Temp' => '0',
+                                        'Data::Semantic::URI::TestData::http' => '0'
+                                      },
+                       'LICENSE' => 'perl'
+                     );
+
+
+delete $WriteMakefileArgs{LICENSE}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.31) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+
